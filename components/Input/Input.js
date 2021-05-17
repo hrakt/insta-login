@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Input.module.scss";
 
-export default function Input({ set, text }) {
+export default function Input({ set, text, type }) {
   return (
     <div className={styles.wrapper}>
       <label className={styles.label}>
@@ -11,8 +11,9 @@ export default function Input({ set, text }) {
         <input
           onChange={(e) => set(e.target.value)}
           placeholder={text}
-          label="Phone number, username, or email"
-          type="text"
+          label={text}
+          minlength={type === "password" ? "8" : null}
+          type={type ? type : "text"}
           className={styles.input}
         />
       </label>

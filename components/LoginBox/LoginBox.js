@@ -2,7 +2,6 @@ import { useState } from "react";
 import Input from "../Input/Input";
 import styles from "./LoginBox.module.scss";
 import firebase from "firebase";
-import Link from "next/link";
 
 export default function LoginBox() {
   const [email, setEmail] = useState(null);
@@ -32,7 +31,7 @@ export default function LoginBox() {
       </div>
       <div className={styles.fields}>
         <Input set={setEmail} text="Phone number, username, or email" />
-        <Input set={setPassword} text="Password" />
+        <Input set={setPassword} text="Password" type="password" />
         <button className={styles.loginButton} onClick={onSignIn}>
           Log In
         </button>

@@ -4,32 +4,22 @@ import { useRouter } from "next/router";
 
 function UserPage({ user }) {
   const router = useRouter();
-  // const [user, setUser] = useState(null);
-  // const [loaded, setLoaded] = useState(null);
-
-  useEffect(() => {
-    // if (firebase.auth().currentUser) {
-    //   setUser(firebase.auth().currentUser);
-    //   setLoaded(true);
-    // } else {
-    //   // history.replace("/");
-    //   setLoaded(false);
-    // }
-  }, []);
 
   const logout = () => {
     firebase
       .auth()
       .signOut()
-      .then(function () {
-        setUser(null);
-      })
+      .then(function () {})
       .catch(function (error) {
         console.log(error);
       });
-    router.replace("/");
   };
 
+  useEffect(() => {
+    if (!user) {
+      router.replace("/");
+    }
+  }, [user]);
   return (
     <div>
       {user && user.email}

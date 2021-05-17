@@ -7,8 +7,8 @@ export default function SignupBox() {
     <div className={styles.box}>
       <p className={styles.paragraph}>
         Don't have an account?{" "}
-        <Link href="/signup" className={styles.link}>
-          Sign up
+        <Link href="/signup">
+          <span className={styles.link}>Sign up</span>
         </Link>
       </p>
     </div>

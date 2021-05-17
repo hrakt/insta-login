@@ -1,4 +1,4 @@
-@import "../public/breakpoints.scss";
+@import "../../public/breakpoints.scss";
 
 .box {
   align-items: center;
@@ -17,6 +17,7 @@
   margin: 0 !important;
   color: #0095f6;
   font-weight: 600;
+  cursor: pointer;
 }
 
 @include mobile {

@@ -2,19 +2,16 @@ import React, { useState, useEffect } from "react";
 import Input from "../Input/Input";
 import styles from "./Signup.module.scss";
 import firebase from "firebase";
-import Link from "next/link";
+
+import { useRouter } from "next/router";
 
 export default function Signup({ user }) {
+  const router = useRouter();
   const [email, setEmail] = useState(null);
   const [fullName, setFullName] = useState(null);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
 
-  useEffect(() => {
-    if (firebase.auth().currentUser) {
-      console.log(firebase.auth().currentUser);
-    }
-  }, []);
   const onSignup = () => {
     firebase
       .auth()
@@ -25,6 +22,7 @@ export default function Signup({ user }) {
           .collection("users")
           .doc(firebase.auth().currentUser.uid)
           .set({ fullName, username });
+        router.push("/user");
       })
       .catch((error) => {
         console.log(error);
@@ -54,11 +52,9 @@ export default function Signup({ user }) {
         <Input set={setEmail} text="Email" />
         <Input set={setFullName} text="Full Name" />
         <Input set={setUsername} text="Username" />
-        <Input set={setPassword} text="Password" />
+        <Input set={setPassword} text="Password" type="password" />
         <button className={styles.loginButton} onClick={onSignup}>
-          <Link className={styles.link} href="/user">
-            Sign up
-          </Link>
+          Sign up
         </button>
         <span className={styles.disclosure}>
           By signing up, you agree to our Terms , Data Policy and Cookies Policy
