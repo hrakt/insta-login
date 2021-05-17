@@ -4,6 +4,7 @@ import SignupBox from "../components/SignupBox/SignupBox";
 import Phone from "../components/Phone/Phone";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
+import AppIcons from "../components/AppIcons/AppIcons";
 
 export default function Home({ user }) {
   const router = useRouter();
@@ -23,6 +24,7 @@ export default function Home({ user }) {
         <div className={styles.right}>
           <LoginBox />
           <SignupBox />
+          <AppIcons />
         </div>
       </div>
     </div>
